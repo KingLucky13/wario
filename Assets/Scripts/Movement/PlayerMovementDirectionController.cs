@@ -7,7 +7,7 @@ namespace LearnGame.Movement
         private UnityEngine.Camera _camera;
         public Vector3 MovementDirection { get; set; }
         [SerializeField]
-        private float accelerationPower=2f;
+        private float _accelerationPower=1.5f;
 
         protected void Awake()
         {
@@ -22,11 +22,12 @@ namespace LearnGame.Movement
             var direction = new Vector3(horizontal, 0, vertical);
             direction = _camera.transform.rotation *direction;
             direction.y = 0;
-            MovementDirection= direction.normalized;
+            direction= direction.normalized;
             if (spacebar)
             {
-                MovementDirection *= accelerationPower;
+               direction *= _accelerationPower;
             }
+            MovementDirection= direction;
 
         }
     }

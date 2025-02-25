@@ -22,9 +22,12 @@ namespace LearnGame.Camera
 
         protected void LateUpdate()
         {
-            Vector3 targetRotation=_rotationOffset-_cameraOffset;
-            transform.position=_player.transform.position+_cameraOffset;
-            transform.rotation = Quaternion.LookRotation(targetRotation, Vector3.up);
+            if (_player != null)
+            {
+                Vector3 targetRotation = _rotationOffset - _cameraOffset;
+                transform.position = _player.transform.position + _cameraOffset;
+                transform.rotation = Quaternion.LookRotation(targetRotation, Vector3.up);
+            }
         }
     }
 }
